@@ -8,14 +8,13 @@ to grab and go.
 
 ## Difference from [ao-cookbook](https://github.com/HelloRWA/ao-cookbook)
 
-* Move top level item to top nav
+* Move top-level item to the top nav
   * reduce the length of left aside menu
-  * only show sub-level menu items in current top level menu
-* For multiple language, I think make a different branch to host this with different sub-domain will be better.
+  * Only show sub-level menu items in the current top-level menu
+* For multiple languages, making a different branch to host this with different sub-domains will be better.
 * Support doc search internal
 * Use [Nuxt3 Docs Template](https://docs-template.nuxt.dev/)
-* Require to buy a [Nuxt3 UI Pro licence](https://ui.nuxt.com/pro?aff=KokMD) to deploy, it's ok to dev in localhost without licence key
-
+* Require to buy a [Nuxt3 UI Pro license](https://ui.nuxt.com/pro?aff=KokMD) to deploy, it's ok to dev in localhost without the licence key
 
 ## Quick Start
 
