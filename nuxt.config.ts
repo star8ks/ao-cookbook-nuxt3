@@ -1,9 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+const defaultLocale = process.env.BUILD_LOCALE || 'en'
+
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
   modules: [
     '@nuxt/content',
     '@nuxt/ui',
+    '@nuxtjs/i18n',
     '@nuxthq/studio',
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
@@ -19,6 +23,29 @@ export default defineNuxtConfig({
   },
   ui: {
     icons: ['heroicons', 'simple-icons']
+  },
+  content: {
+    sources: {
+      // overwrite default source AKA `content` directory
+      content: {
+        driver: 'fs',
+        base: `content/${defaultLocale}`,
+      }
+    }
+  },
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        name: 'English'
+      },
+      {
+        code: 'zh',
+        name: '中文'
+      },
+    ],
+    defaultLocale,
+    vueI18n: './i18n.config.ts' // if you are using custom path, default
   },
   // Fonts
   fontMetrics: {
@@ -37,7 +64,7 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true
   },
-  content: {
+  mdc: {
     highlight: {
       langs: ['lua'],
     }
