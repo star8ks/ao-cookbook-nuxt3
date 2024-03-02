@@ -1,7 +1,7 @@
 export default defineAppConfig({
   ui: {
     primary: 'green',
-    gray: 'slate',
+    gray: 'zinc',
     footer: {
       bottom: {
         left: 'text-sm text-gray-500 dark:text-gray-400',
@@ -24,7 +24,7 @@ export default defineAppConfig({
       icon: 'i-simple-icons-github',
       to: 'https://github.com/permaweb/ao-cookbook',
       target: '_blank',
-      'aria-label': 'Docs template on GitHub'
+      'aria-label': 'ao cookbook on GitHub'
     }]
   },
   footer: {
