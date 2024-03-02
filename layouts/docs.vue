@@ -2,18 +2,31 @@
 import type { NavItem } from '@nuxt/content/dist/runtime/types'
 
 const nav = inject<Ref<NavItem[]>>('navigation')
+const { locale } = $(useI18n())
 
 const route = useRoute()
-const currentRootFolder = computed(() => `/${route.path.split('/')[1]}`)
-const currentLevel1Folder = computed(() => `/${route.path.split('/')[2]}`)
+
+// const navigation = computed(() => nav.value.filter(item => !item._path.startsWith('/pro')))
 
 const navigation = computed(() => {
-  const navItem = nav.value.filter(item => {
-    return item._path.startsWith(currentRootFolder.value)
-  })[0]
+  const routePathArr = route.path.split('/')
+  let currentRootFolder = `/${routePathArr[1]}`
+  let currentLevel1Folder = `/${routePathArr[2]}`
+  let navAll = nav.value
+  let localePrefix = ''
+  if (locale !== 'en') {
+    localePrefix = `/${locale}`
+    navAll = navAll.find(item => item._path === `/${locale}`).children
+    currentRootFolder = `/${routePathArr[2]}`
+    currentLevel1Folder = `/${routePathArr[3]}`
+  }
 
-  if (currentRootFolder.value === '/guides') {
-    if (currentLevel1Folder.value === '/undefined') {
+  let navItem = navAll.find(item => {
+    return item._path.startsWith(`${localePrefix}${currentRootFolder}`)
+  })
+
+  if (currentRootFolder === '/guides') {
+    if (currentLevel1Folder === '/undefined') {
       return {
         title: navItem.title,
         _path: navItem._path,
@@ -25,8 +38,7 @@ const navigation = computed(() => {
         })
       }
     } else {
-      console.log(`====> navItem :`, navItem)
-      return navItem.children.find(({ _path }) => _path === `${currentRootFolder.value}${currentLevel1Folder.value}`)
+      return navItem.children.find(({ _path }) => _path === `${localePrefix}${currentRootFolder}${currentLevel1Folder}`)
     }
   }
 
@@ -40,7 +52,7 @@ const navigation = computed(() => {
     <UPage>
       <template #left>
         <UAside>
-          <UNavigationTree :links="mapContentNavigation(navigation.children, navigation)" :multiple="false" />
+          <UNavigationTree v-if="navigation" :links="mapContentNavigation(navigation.children, navigation)" :multiple="false" />
         </UAside>
       </template>
 

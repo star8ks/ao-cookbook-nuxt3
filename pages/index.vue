@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
+const route = useRoute()
+const { data: page } = await useAsyncData('index', () => queryContent(route.path).findOne())
 
 useSeoMeta({
   titleTemplate: '',
@@ -14,14 +15,14 @@ useSeoMeta({
   <div>
     <ULandingHero v-if="page.hero" v-bind="page.hero">
       <template #headline>
-        <UBadge v-if="page.hero.headline" variant="subtle" size="lg" class="relative rounded-full font-semibold">
+        <UBadge v-if="page.hero.headline" variant="subtle" size="lg" class="rounded-full font-semibold relative">
           <NuxtLink :to="page.hero.headline.to" target="_blank" class="focus:outline-none" tabindex="-1">
-            <span class="absolute inset-0" aria-hidden="true" />
+            <span class="inset-0 absolute" aria-hidden="true" />
           </NuxtLink>
 
           {{ page.hero.headline.label }}
 
-          <UIcon v-if="page.hero.headline.icon" :name="page.hero.headline.icon" class="ml-1 w-4 h-4 pointer-events-none" />
+          <UIcon v-if="page.hero.headline.icon" :name="page.hero.headline.icon" class="h-4 ml-1 w-4 pointer-events-none" />
         </UBadge>
       </template>
 
@@ -29,7 +30,7 @@ useSeoMeta({
         <MDC :value="page.hero.title" />
       </template>
 
-      <MDC :value="page.hero.code" tag="pre" class="prose prose-primary dark:prose-invert mx-auto" />
+      <MDC :value="page.hero.code" tag="pre" class="mx-auto prose prose-primary dark:prose-invert" />
     </ULandingHero>
 
     <ULandingSection :title="page.features.title" :links="page.features.links">

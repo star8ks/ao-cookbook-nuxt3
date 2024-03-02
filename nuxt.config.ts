@@ -1,7 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-
-const defaultLocale = process.env.BUILD_LOCALE || 'en'
-
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
   modules: [
@@ -11,7 +8,8 @@ export default defineNuxtConfig({
     '@nuxthq/studio',
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
-    'nuxt-og-image'
+    'nuxt-og-image',
+     '@vue-macros/nuxt'
   ],
   hooks: {
     // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
@@ -26,11 +24,15 @@ export default defineNuxtConfig({
   },
   content: {
     sources: {
-      // overwrite default source AKA `content` directory
       content: {
         driver: 'fs',
-        base: `content/${defaultLocale}`,
-      }
+        base: 'content',
+      },
+      zh: {
+        prefix: '/zh',
+        driver: 'fs',
+        base: 'content-zh',
+      },
     }
   },
   i18n: {
@@ -44,7 +46,7 @@ export default defineNuxtConfig({
         name: '中文'
       },
     ],
-    defaultLocale,
+    defaultLocale: 'en',
     vueI18n: './i18n.config.ts' // if you are using custom path, default
   },
   // Fonts
@@ -57,6 +59,9 @@ export default defineNuxtConfig({
     families: {
       'DM+Sans': [400, 500, 600, 700]
     }
+  },
+  vue: {
+    propsDestructure: true
   },
   routeRules: {
     '/api/search.json': { prerender: true },

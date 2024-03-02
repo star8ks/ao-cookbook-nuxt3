@@ -1,46 +1,54 @@
 <script setup lang="ts">
 import type { NavItem } from '@nuxt/content/dist/runtime/types'
-const { t } = useI18n()
+const { t, locale } = $(useI18n())
+const localePath = useLocalePath()
 
 const navigation = inject<NavItem[]>('navigation', [])
 
 const { header } = useAppConfig()
 
 const route = useRoute()
-const currentFolder = computed(() => `/${route.path.split('/')[1]}`)
+
+const currentFolder = $computed(() => {
+  const routePathArr = route.path.split('/')
+  if (locale !== 'en') {
+    return `/${locale}/${routePathArr[2]}`
+  }
+  return `/${routePathArr[1]}`
+})
 
 const links = computed(() => {
   return [{
     label: t('Welcome'),
-    to: '/welcome',
-    active: currentFolder.value === '/welcome',
+    to: localePath('/welcome'),
+    active: currentFolder === localePath('/welcome')
   }, {
     label: t('Tutorials'),
-    to: '/tutorials',
-    active: currentFolder.value === '/tutorials',
+    to: localePath('/tutorials'),
+    active: currentFolder === localePath('/tutorials')
   }, {
     label: t('Guides'),
-    to: '/guides',
-    active: currentFolder.value === '/guides',
+    to: localePath('/guides'),
+    active: currentFolder === localePath('/guides'),
     children: [
-      { label: t('aos'), to: '/guides/aos' },
-      { label: t('aoconnect'), to: '/guides/aoconnect' },
+      { label: t('aos'), to: localePath('/guides/aos') },
+      { label: t('aoconnect'), to: localePath('/guides/aoconnect') },
     ]
   }, {
     label: t('Concepts'),
-    to: '/concepts',
-    active: currentFolder.value === '/concepts',
+    to: localePath('/concepts'),
+    active: currentFolder === localePath('/concepts')
   }, {
     label: t('References'),
-    to: '/references',
-    active: currentFolder.value === '/references',
+    to: localePath('/references'),
+    active: currentFolder === localePath('/references'),
   }]
 })
 
 </script>
 
 <template>
-  <UHeader>
+  <UHeader :to="localePath('/')">
     <template #logo>
       <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
       <UBadge :label="$t('Cookbook')" variant="subtle" class="mb-0.5" />
@@ -54,6 +62,7 @@ const links = computed(() => {
       <UContentSearchButton v-if="header?.search" class="max-w-60 hidden lg:flex" />
       <UContentSearchButton v-if="header?.search" :label="null" class="lg:hidden" />
 
+      <LanguageSwitcher class="ml-2" />
       <UColorModeButton v-if="header?.colorMode" />
 
       <template v-if="header?.links">
