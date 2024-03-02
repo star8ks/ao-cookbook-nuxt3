@@ -37,6 +37,11 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true
   },
+  content: {
+    highlight: {
+      langs: ['lua'],
+    }
+  },
   typescript: {
     strict: false
   }

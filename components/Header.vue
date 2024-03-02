@@ -4,34 +4,57 @@ import type { NavItem } from '@nuxt/content/dist/runtime/types'
 const navigation = inject<NavItem[]>('navigation', [])
 
 const { header } = useAppConfig()
+
+const route = useRoute()
+const currentFolder = computed(() => `/${route.path.split('/')[1]}`)
+
+const links = computed(() => {
+  return [{
+    label: 'Welcome',
+    to: '/welcome',
+    active: currentFolder.value === '/welcome',
+  }, {
+    label: 'Tutorials',
+    to: '/tutorials',
+    active: currentFolder.value === '/tutorials',
+  }, {
+    label: 'Guides',
+    to: '/guides',
+    active: currentFolder.value === '/guides',
+    children: [
+      { label: 'aos', to: '/guides/aos' },
+      { label: 'aoconnect', to: '/guides/aoconnect' },
+    ]
+  }, {
+    label: 'Concepts',
+    to: '/concepts',
+    active: currentFolder.value === '/concepts',
+  }, {
+    label: 'References',
+    to: '/references',
+    active: currentFolder.value === '/references',
+  }]
+})
 </script>
 
 <template>
   <UHeader>
     <template #logo>
-      <template v-if="header?.logo?.dark || header?.logo?.light">
-        <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
-      </template>
-      <template v-else>
-        Nuxt UI Pro <UBadge label="Docs" variant="subtle" class="mb-0.5" />
-      </template>
+      <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
+      <UBadge label="Cookbook" variant="subtle" class="mb-0.5" />
     </template>
 
-    <template v-if="header?.search" #center>
-      <UContentSearchButton class="hidden lg:flex" />
+    <template #center>
+      <UHeaderLinks :links="links" />
     </template>
-
     <template #right>
+      <UContentSearchButton v-if="header?.search" class="max-w-40 hidden lg:flex" />
       <UContentSearchButton v-if="header?.search" :label="null" class="lg:hidden" />
 
       <UColorModeButton v-if="header?.colorMode" />
 
       <template v-if="header?.links">
-        <UButton
-          v-for="(link, index) of header.links"
-          :key="index"
-          v-bind="{ color: 'gray', variant: 'ghost', ...link }"
-        />
+        <UButton v-for="(link, index) of header.links" :key="index" v-bind="{ color: 'gray', variant: 'ghost', ...link }" />
       </template>
     </template>
 
