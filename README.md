@@ -1,6 +1,6 @@
 ![ao-cookbook-social-card](./public/ao-cookbook.png)
 
-# ao Cookbook
+# [ao Cookbook](https://ao-cookbook.web3blog.world/)
 
 The ao Cookbook is meant to house small digestible code snippets
 for someone that has no experience with ao to be able
