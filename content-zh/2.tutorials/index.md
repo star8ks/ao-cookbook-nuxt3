@@ -1,11 +1,11 @@
 ---
-title: Tutorials
-description: Here, we've created a series of tutorials to help you get started with aos and build your first processes. These tutorials include interactive guides, code snippets, and examples to help you get comfortable with the aos environment.
+title: 教程
+description: 在这里，我们创建了一系列教程来帮助您开始使用 aos 并构建您的第一个进程。 这些教程包括交互式指南、代码片段和示例，以帮助您熟悉 aos 环境。
 navigation: false
 ---
 
-## List of Tutorials
+## 教程列表
 
-- [Getting Started - An Interactive Guide](/tutorials/begin/overview)
+- [开始 - 互动指南](/zh/tutorials/begin)
 
-- [Bots and Games](/tutorials/bots-and-games/overview)
+- [机器人和游戏](/zh/tutorials/bots-and-games)
