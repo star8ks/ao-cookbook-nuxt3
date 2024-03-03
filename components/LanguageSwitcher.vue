@@ -17,7 +17,9 @@ const availableLocales = $computed(() => {
 
 <template>
   <UDropdown :items="availableLocales" mode="hover" :popper="{ placement: 'bottom-start' }">
-    <UIcon name="i-heroicons-language-16-solid" class="group-hover:text-gray-800" />
-    <UIcon name="i-heroicons-chevron-down" />
+    <div class="flex justify-center items-center hover:opacity-80">
+      <UIcon name="i-heroicons-language-16-solid" />
+      <UIcon name="i-heroicons-chevron-down" />
+    </div>
   </UDropdown>
 </template>

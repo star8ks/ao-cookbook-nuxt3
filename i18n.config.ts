@@ -11,6 +11,7 @@ export default defineI18nConfig(() => ({
       References: 'References',
       aos: 'aos',
       aoconnect: 'aoconnect',
+      'Search...': 'Search...',
     },
     zh: {
       Cookbook: '手册',
@@ -22,6 +23,7 @@ export default defineI18nConfig(() => ({
       References: '参考',
       aos: 'aos',
       aoconnect: 'aoconnect',
+      'Search...': '搜索...',
     },
   }
 }))

@@ -59,8 +59,8 @@ const links = computed(() => {
     </template>
 
     <template #right>
-      <UContentSearchButton v-if="header?.search" class="max-w-60 hidden lg:flex" />
-      <UContentSearchButton v-if="header?.search" :label="null" class="lg:hidden" />
+      <UContentSearchButton v-if="header?.search" class="max-w-40 hidden lg:flex" :label="$t('Search...')" />
+      <UContentSearchButton v-if="header?.search" class="lg:hidden" :label="$t('Search...')" />
 
       <LanguageSwitcher class="ml-2" />
       <UColorModeButton v-if="header?.colorMode" />
