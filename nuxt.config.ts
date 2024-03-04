@@ -4,10 +4,12 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
     '@nuxt/ui',
+    '@nuxtjs/i18n',
     '@nuxthq/studio',
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
-    'nuxt-og-image'
+    'nuxt-og-image',
+     '@vue-macros/nuxt'
   ],
   hooks: {
     // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
@@ -20,6 +22,33 @@ export default defineNuxtConfig({
   ui: {
     icons: ['heroicons', 'simple-icons']
   },
+  content: {
+    sources: {
+      content: {
+        driver: 'fs',
+        base: 'content',
+      },
+      zh: {
+        prefix: '/zh',
+        driver: 'fs',
+        base: 'content-zh',
+      },
+    }
+  },
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        name: 'English'
+      },
+      {
+        code: 'zh',
+        name: '中文'
+      },
+    ],
+    defaultLocale: 'en',
+    vueI18n: './i18n.config.ts' // if you are using custom path, default
+  },
   // Fonts
   fontMetrics: {
     fonts: ['DM Sans']
@@ -31,13 +60,16 @@ export default defineNuxtConfig({
       'DM+Sans': [400, 500, 600, 700]
     }
   },
+  vue: {
+    propsDestructure: true
+  },
   routeRules: {
     '/api/search.json': { prerender: true },
   },
   devtools: {
     enabled: true
   },
-  content: {
+  mdc: {
     highlight: {
       langs: ['lua'],
     }

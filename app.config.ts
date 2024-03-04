@@ -19,17 +19,12 @@ export default defineAppConfig({
       dark: '/ao_pictograph_darkmode.svg'
     },
     search: true,
-    colorMode: true,
-    links: [{
-      icon: 'i-simple-icons-github',
-      to: 'https://github.com/permaweb/ao-cookbook',
-      target: '_blank',
-      'aria-label': 'ao cookbook on GitHub'
-    }]
+    colorMode: false,
+    links: []
   },
   footer: {
     credits: 'Copyright © 2024',
-    colorMode: false,
+    colorMode: true,
     links: [{
       icon: 'i-simple-icons-discord',
       to: 'https://discord.gg/zAN7PTHkAX',
@@ -40,6 +35,11 @@ export default defineAppConfig({
       to: 'https://twitter.com/aoTheComputer',
       target: '_blank',
       'aria-label': 'AO on X'
+    }, {
+      icon: 'i-simple-icons-github',
+      to: 'https://github.com/permaweb/ao-cookbook',
+      target: '_blank',
+      'aria-label': 'ao cookbook on GitHub'
     }]
   },
   toc: {

@@ -6,6 +6,6 @@ navigation: false
 
 ## List of Tutorials
 
-- [Getting Started - An Interactive Guide](/tutorials/begin/overview)
+- [Getting Started - An Interactive Guide](/tutorials/begin)
 
-- [Bots and Games](/tutorials/bots-and-games/overview)
+- [Bots and Games](/tutorials/bots-and-games)

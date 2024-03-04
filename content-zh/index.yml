@@ -1,0 +1,38 @@
+title: "AO 手册"
+description: 任何规模的去中心化计算。Arweave 上独有。
+navigation: false
+hero:
+  title: "超级并行计算机"
+  description: "任何规模的去中心化计算 - Arweave 上独有！"
+  orientation: horizontal
+  links:
+    - label: 即刻体验！
+      icon: i-heroicons-arrow-right-20-solid
+      trailing: true
+      to: "/zh/welcome"
+      size: lg
+    - label: 查看源码
+      icon: i-simple-icons-github
+      size: lg
+      color: gray
+      to: https://github.com/permaweb/aos
+      target: _blank
+  code: |
+    ```bash [Terminal]
+    npm i -g https://get_ao.g8way.io
+    aos
+    ```
+features:
+  items:
+    - title: "教程"
+      description: "手把手教你入门 ao"
+      to: "/zh/tutorials"
+      icon: "i-heroicons-book-open"
+    - title: "指南"
+      description: "各个功能部件的详细说明"
+      to: "/zh/guides"
+      icon: "i-heroicons-academic-cap-20-solid"
+    - title: "概念"
+      description: "搞懂 ao 网络背后的运行原理"
+      to: "/zh/concepts"
+      icon: "i-heroicons-sparkles-20-solid"
