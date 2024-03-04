@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { NavItem } from '@nuxt/content/dist/runtime/types'
-const { t, locale } = $(useI18n())
+const { t } = $(useI18n())
 const localePath = useLocalePath()
 
 const navigation = inject<NavItem[]>('navigation', [])
@@ -9,53 +9,41 @@ const { header } = useAppConfig()
 
 const route = useRoute()
 
-const currentFolder = $computed(() => {
-  const routePathArr = route.path.split('/')
-  if (locale !== 'en') {
-    return `/${locale}/${routePathArr[2]}`
-  }
-  return `/${routePathArr[1]}`
-})
-
 const links = computed(() => {
   return [{
     label: t('Welcome'),
-    to: localePath('/welcome'),
-    active: currentFolder === localePath('/welcome')
+    to: localePath('/docs/welcome'),
+    active: route.path.includes(localePath('/docs/welcome'))
   }, {
     label: t('Tutorials'),
-    to: localePath('/tutorials'),
-    active: currentFolder === localePath('/tutorials')
+    to: localePath('/docs/tutorials'),
+    active: route.path.includes(localePath('/docs/tutorials'))
   }, {
     label: t('Guides'),
-    to: localePath('/guides'),
-    active: currentFolder === localePath('/guides'),
+    to: localePath('/docs/guides'),
     children: [
-      { label: t('aos'), to: localePath('/guides/aos') },
-      { label: t('aoconnect'), to: localePath('/guides/aoconnect') },
-    ]
+      { label: t('aos'), to: localePath('/docs/guides/aos') },
+      { label: t('aoconnect'), to: localePath('/docs/guides/aoconnect') },
+    ],
+    active: route.path.includes(localePath('/docs/guides'))
   }, {
     label: t('Concepts'),
-    to: localePath('/concepts'),
-    active: currentFolder === localePath('/concepts')
+    to: localePath('/docs/concepts'),
+    active: route.path.includes(localePath('/docs/concepts'))
   }, {
     label: t('References'),
-    to: localePath('/references'),
-    active: currentFolder === localePath('/references'),
+    to: localePath('/docs/references'),
+    active: route.path.includes(localePath('/docs/references'))
   }]
 })
 
 </script>
 
 <template>
-  <UHeader :to="localePath('/')">
+  <UHeader :to="localePath('/')" :links="links">
     <template #logo>
       <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
       <UBadge :label="$t('Cookbook')" variant="subtle" class="mb-0.5" />
-    </template>
-
-    <template #center>
-      <UHeaderLinks :links="links" />
     </template>
 
     <template #right>

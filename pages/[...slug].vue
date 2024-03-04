@@ -7,16 +7,18 @@ definePageMeta({
 
 const route = useRoute()
 const { toc, seo } = useAppConfig()
-
-const { data: page } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
+const { locale } = $(useI18n())
+// const thePath = $computed(() => locale === 'en' ? `/en${route.path}` : route.path)
+const thePath = $computed(() => route.path)
+const { data: page } = await useAsyncData(thePath, () => queryContent(thePath).findOne())
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent()
+const { data: surround } = await useAsyncData(`${thePath}-surround`, () => queryContent()
   .where({ _extension: 'md', navigation: { $ne: false } })
   .only(['title', 'description', '_path'])
-  .findSurround(withoutTrailingSlash(route.path))
+  .findSurround(withoutTrailingSlash(thePath))
 )
 
 useSeoMeta({
@@ -57,7 +59,7 @@ const links = computed(() => [toc?.bottom?.edit && {
     <template v-if="page.toc !== false" #right>
       <UContentToc :title="$t(toc?.title)" :links="page.body?.toc?.links">
         <template v-if="toc?.bottom" #bottom>
-          <div class="hidden lg:block space-y-6" :class="{ '!mt-6': page.body?.toc?.links?.length }">
+          <div class="space-y-6 hidden lg:block" :class="{ '!mt-6': page.body?.toc?.links?.length }">
             <UDivider v-if="page.body?.toc?.links?.length" type="dashed" />
 
             <UPageLinks :title="toc.bottom.title" :links="links" />

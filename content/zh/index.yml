@@ -9,7 +9,7 @@ hero:
     - label: 即刻体验！
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
-      to: "/zh/welcome"
+      to: "/zh/docs/welcome"
       size: lg
     - label: 查看源码
       icon: i-simple-icons-github
@@ -26,13 +26,13 @@ features:
   items:
     - title: "教程"
       description: "手把手教你入门 ao"
-      to: "/zh/tutorials"
+      to: "/zh/docs/tutorials"
       icon: "i-heroicons-book-open"
     - title: "指南"
       description: "各个功能部件的详细说明"
-      to: "/zh/guides"
+      to: "/zh/docs/guides"
       icon: "i-heroicons-academic-cap-20-solid"
     - title: "概念"
       description: "搞懂 ao 网络背后的运行原理"
-      to: "/zh/concepts"
+      to: "/zh/docs/concepts"
       icon: "i-heroicons-sparkles-20-solid"

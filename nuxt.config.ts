@@ -5,12 +5,14 @@ export default defineNuxtConfig({
     '@nuxt/content',
     'nuxt-gtag',
     '@nuxt/ui',
+    '@nuxtjs/mdc',
     '@nuxtjs/i18n',
     '@nuxthq/studio',
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
     'nuxt-og-image',
-    '@vue-macros/nuxt'
+    '@vue-macros/nuxt',
+    '@nuxt/image'
   ],
   hooks: {
     // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
@@ -27,16 +29,18 @@ export default defineNuxtConfig({
     sources: {
       content: {
         driver: 'fs',
-        base: 'content',
+        prefix: '/en',
+        base: 'content/en',
       },
       zh: {
         prefix: '/zh',
         driver: 'fs',
-        base: 'content-zh',
+        base: 'content/zh',
       },
     }
   },
   i18n: {
+    strategy: 'prefix',
     locales: [
       {
         code: 'en',

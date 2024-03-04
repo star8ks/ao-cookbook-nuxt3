@@ -7,6 +7,7 @@ const availableLocales = $computed(() => {
     return {
       label: item.name,
       click: () => {
+        console.log(`====> switchLocalePath(item.code) :`, switchLocalePath(item.code))
         navigateTo(switchLocalePath(item.code))
       }
     }

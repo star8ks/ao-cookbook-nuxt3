@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const route = useRoute()
-const { data: page } = await useAsyncData('index', () => queryContent(route.path).findOne())
+const { locale } = $(useI18n())
+const thePath = locale === 'en' ? '/en' : route.path
+const { data: page } = await useAsyncData(thePath, () => queryContent(thePath).findOne())
 
 useSeoMeta({
   titleTemplate: '',

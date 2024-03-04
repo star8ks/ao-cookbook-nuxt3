@@ -9,7 +9,7 @@ hero:
     - label: Let's Go!
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
-      to: "/welcome"
+      to: "/en/docs/welcome"
       size: lg
     - label: Check source
       icon: i-simple-icons-github
@@ -26,13 +26,13 @@ features:
   items:
     - title: "Tutorials"
       description: "Follow the step-by-step tutorials to start building on ao."
-      to: "/tutorials"
+      to: "/en/docs/tutorials"
       icon: "i-heroicons-book-open"
     - title: "Guides"
       description: "Bite size walkthroughs on specific features."
-      to: "/guides"
+      to: "/en/docs/guides"
       icon: "i-heroicons-academic-cap-20-solid"
     - title: "Concepts"
       description: "Learn how the ao network works under the hood."
-      to: "/concepts"
+      to: "/en/docs/concepts"
       icon: "i-heroicons-sparkles-20-solid"
