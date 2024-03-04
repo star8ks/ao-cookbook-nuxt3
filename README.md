@@ -6,7 +6,7 @@ The ao Cookbook is meant to house small digestible code snippets
 for someone that has no experience with ao to be able
 to grab and go.
 
-## Difference from [ao-cookbook](https://github.com/HelloRWA/ao-cookbook)
+## Difference from [official ao-cookbook](https://github.com/permaweb/ao-cookbook)
 
 * Move top-level item to the top nav
   * reduce the length of left aside menu
@@ -19,7 +19,7 @@ to grab and go.
 ## Quick Start
 
 ```bash [Terminal]
-git clone git@github.com:HelloRWA/ao-cookbook-nuxt3.git
+git clone git@github.com:Web3HackerWorld/ao-cookbook-nuxt3.git
 ```
 
 ## Setup
