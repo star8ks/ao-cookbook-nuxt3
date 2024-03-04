@@ -28,6 +28,10 @@ export default defineNuxtConfig({
   content: {
     sources: {
       content: {
+        driver: 'fs',
+        base: 'content/default',
+      },
+      en: {
         prefix: '/en',
         driver: 'fs',
         base: 'content/en',

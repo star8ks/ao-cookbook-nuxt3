@@ -6,6 +6,6 @@ navigation: false
 
 ## 教程列表
 
-- [开始 - 互动指南](/zh/tutorials/begin)
+- [开始 - 互动指南](/zh/docs/tutorials/begin)
 
-- [机器人和游戏](/zh/tutorials/bots-and-games)
+- [机器人和游戏](/zh/docs/tutorials/bots-and-games)
