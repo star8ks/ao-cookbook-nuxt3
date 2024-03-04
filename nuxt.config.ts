@@ -3,13 +3,14 @@ export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
   modules: [
     '@nuxt/content',
+    'nuxt-gtag',
     '@nuxt/ui',
     '@nuxtjs/i18n',
     '@nuxthq/studio',
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
     'nuxt-og-image',
-     '@vue-macros/nuxt'
+    '@vue-macros/nuxt'
   ],
   hooks: {
     // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
