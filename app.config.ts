@@ -37,7 +37,7 @@ export default defineAppConfig({
       'aria-label': 'AO on X'
     }, {
       icon: 'i-simple-icons-github',
-      to: 'https://github.com/permaweb/ao-cookbook',
+      to: 'https://github.com/Web3HackerWorld/ao-cookbook-nuxt3',
       target: '_blank',
       'aria-label': 'ao cookbook on GitHub'
     }]
