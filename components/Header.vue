@@ -4,7 +4,6 @@ const { t } = $(useI18n())
 const localePath = useLocalePath()
 
 const navigation = inject<NavItem[]>('navigation', [])
-
 const { header } = useAppConfig()
 
 const route = useRoute()

@@ -20,7 +20,6 @@ const { data: surround } = await useAsyncData(`${thePath}-surround`, () => query
   .only(['title', 'description', '_path'])
   .findSurround(withoutTrailingSlash(thePath))
 )
-
 useSeoMeta({
   title: page.value.title,
   ogTitle: `${page.value.title} - ${seo?.siteName}`,

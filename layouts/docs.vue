@@ -9,8 +9,10 @@ const thePath = $computed(() => locale === 'en' ? `/en${route.path}` : route.pat
 
 const nav = $computed(() => {
   let items = navAll.value.find(item => item._path === `/${locale}`).children
-  items = items.find(item => thePath.includes(item._path))
-  const level1Nav = items?.children.find(item => thePath.includes(item._path))
+  // /docs
+  items = items.find(item => route.path.startsWith(item._path))?.children || []
+  // /docs/xxx
+  const level1Nav = items.find(item => route.path.startsWith(item._path))
   return level1Nav
 })
 

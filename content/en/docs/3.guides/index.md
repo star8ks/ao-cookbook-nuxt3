@@ -6,5 +6,5 @@ navigation: false
 
 ## List of Guides
 
-- [aos](/guides/aos)
-- [aoconnect](/guides/aoconnect/aoconnect)
+- [aos](guides/aos)
+- [aoconnect](guides/aoconnect/aoconnect)
