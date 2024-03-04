@@ -49,6 +49,9 @@ devDependencies:
   eslint:
     specifier: ^8.56.0
     version: 8.56.0
+  nuxt-gtag:
+    specifier: ^2.0.4
+    version: 2.0.4(rollup@4.12.0)
   vue-tsc:
     specifier: ^1.8.27
     version: 1.8.27(typescript@5.3.3)
@@ -7426,6 +7429,18 @@ packages:
       scule: 1.3.0
       typescript: 5.3.3
       vue-component-meta: 1.8.27(typescript@5.3.3)
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: true
+
+  /nuxt-gtag@2.0.4(rollup@4.12.0):
+    resolution: {integrity: sha512-oQgLc+GlxX0W0buYW+HYv6G+W5rS2yARA3kITOYN4rPURRbbK15G9XzKErUF8hhQLmTUj3rFGQmWeVzrWuscig==}
+    dependencies:
+      '@nuxt/kit': 3.10.3(rollup@4.12.0)
+      defu: 6.1.4
+      pathe: 1.1.2
+      ufo: 1.4.0
     transitivePeerDependencies:
       - rollup
       - supports-color
