@@ -2,8 +2,17 @@
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
 const { seo } = useAppConfig()
+const { locale } = $(useI18n())
+const navigation = ref([])
+watchEffect(async () => {
+  const { data } = await useAsyncData(`navigation-${locale}`, () => fetchContentNavigation(`/${locale}`))
+  navigation.value = data.value
+})
 
-const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
+const searchFileList = $computed(() => {
+  return navigation.value[0].children
+})
+
 const { data: files } = useLazyFetch<ParsedContent[]>('/api/search.json', {
   default: () => [],
   server: false
@@ -45,7 +54,7 @@ provide('navigation', navigation)
     <Footer />
 
     <ClientOnly>
-      <LazyUContentSearch :files="files" :navigation="navigation" />
+      <LazyUContentSearch :files="files" :navigation="searchFileList" />
     </ClientOnly>
 
     <UNotifications />

@@ -8,7 +8,6 @@ definePageMeta({
 const route = useRoute()
 const { toc, seo } = useAppConfig()
 const { locale } = $(useI18n())
-// const thePath = $computed(() => locale === 'en' ? `/en${route.path}` : route.path)
 const thePath = $computed(() => route.path)
 const { data: page } = await useAsyncData(thePath, () => queryContent(thePath).findOne())
 if (!page.value) {

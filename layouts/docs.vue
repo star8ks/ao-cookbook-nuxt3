@@ -5,7 +5,6 @@ import { get } from 'lodash'
 const navAll = inject<Ref<NavItem[]>>('navigation')
 const { locale } = $(useI18n())
 const route = useRoute()
-const thePath = $computed(() => locale === 'en' ? `/en${route.path}` : route.path)
 
 const nav = $computed(() => {
   let items = navAll.value.find(item => item._path === `/${locale}`).children
