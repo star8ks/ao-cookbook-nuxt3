@@ -41,7 +41,7 @@ export default defineNuxtConfig({
         driver: 'fs',
         base: 'content/zh',
       },
-    }
+    },
   },
   i18n: {
     strategy: 'prefix',
@@ -76,7 +76,11 @@ export default defineNuxtConfig({
     '/api/search.json': { prerender: true },
   },
   devtools: {
-    enabled: true
+    enabled: true,
+
+    timeline: {
+      enabled: true
+    }
   },
   mdc: {
     highlight: {

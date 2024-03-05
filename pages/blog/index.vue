@@ -1,24 +1,13 @@
 <script setup lang="ts">
 import type { BlogPost } from '~/types'
-const { locale } = $(useI18n())
 
-const blogFolder = $computed(() => {
-  if (locale === 'en') return '/blog'
-  return `/${locale}/blog`
-})
-console.log(`====> locale :`, locale, blogFolder)
-const { data: page } = await useAsyncData(`blog-${locale}`, () => queryContent(blogFolder).findOne())
-console.log(`====> page :`, page)
+const route = useRoute()
+const { data: page } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-// const { data: page } = await useAsyncData('blog', () => queryContent('/blog').findOne())
-// if (!page.value) {
-//   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
-// }
-
-const { data: posts } = await useAsyncData('posts', () => queryContent<BlogPost>('/blog')
+const { data: posts } = await useAsyncData('posts', () => queryContent<BlogPost>(route.path)
   .where({ _extension: 'md' })
   .sort({ date: -1 })
   .find())
